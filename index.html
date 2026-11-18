@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ethan Kaminsky – Aerospace Engineering Portfolio</title>
+<meta name="description" content="Engineering portfolio of Ethan Kaminsky, aerospace engineering student at Embry-Riddle Aeronautical University.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=IBM+Plex+Sans:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #13202E;
+    --ink-2: #1C2D40;
+    --paper: #F6F5F1;
+    --card: #FBFBF8;
+    --line: #DAD8D0;
+    --body: #44515F;
+    --muted: #6A7684;
+    --accent: #E2702A;
+    --accent-text: #B5521B;
+    --mist: #E8EEF2;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--paper); color: var(--ink); font-family: 'IBM Plex Sans', Arial, sans-serif; font-size: 17px; line-height: 1.6; }
+  img { display: block; max-width: 100%; }
+  a { color: inherit; }
+  h1, h2, h3 { font-family: 'Space Grotesk', Arial, sans-serif; line-height: 1.15; }
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+  .eyebrow { font-size: 13px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; color: var(--accent-text); }
+
+  /* nav */
+  nav { position: sticky; top: 0; z-index: 10; background: rgba(19,32,46,.96); backdrop-filter: blur(6px); }
+  nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 60px; gap: 16px; }
+  nav .brand { font-family: 'Space Grotesk', sans-serif; font-weight: 700; color: var(--paper); text-decoration: none; white-space: nowrap; }
+  nav ul { display: flex; gap: 22px; list-style: none; overflow-x: auto; }
+  nav ul a { color: #BFCAD6; text-decoration: none; font-size: 15px; white-space: nowrap; }
+  nav ul a:hover { color: #fff; }
+
+  /* hero */
+  .hero { background: var(--ink); color: var(--paper); padding: 80px 0 88px; }
+  .hero .wrap { display: grid; grid-template-columns: 1.2fr 1fr; gap: 48px; align-items: center; }
+  .hero .eyebrow { color: #F0904F; }
+  .hero h1 { font-size: clamp(44px, 7vw, 76px); margin: 14px 0 16px; }
+  .hero p.lede { font-size: 20px; color: #BFCAD6; max-width: 560px; }
+  .hero .stats { display: flex; gap: 28px; margin: 28px 0 32px; flex-wrap: wrap; }
+  .hero .stats b { display: block; font-family: 'Space Grotesk', sans-serif; font-size: 30px; color: #fff; }
+  .hero .stats span { font-size: 14px; color: #BFCAD6; }
+  .btns { display: flex; gap: 12px; flex-wrap: wrap; }
+  .btn { display: inline-block; padding: 12px 22px; border-radius: 999px; font-weight: 600; font-size: 15px; text-decoration: none; }
+  .btn.primary { background: var(--accent); color: var(--ink); }
+  .btn.ghost { border: 1px solid #4A5D72; color: #DCE3EA; }
+  .hero-img { background: var(--card); border-radius: 20px; padding: 24px; }
+
+  /* sections */
+  section { padding: 80px 0; }
+  section.alt { background: var(--mist); }
+  .sec-head { margin-bottom: 36px; max-width: 760px; }
+  .sec-head h2 { font-size: clamp(30px, 4.4vw, 44px); margin: 10px 0 12px; }
+  .sec-head p { color: var(--body); font-size: 18px; }
+
+  .about-grid { display: grid; grid-template-columns: 1.3fr 1fr; gap: 40px; }
+  .about-grid p { color: var(--body); margin-bottom: 16px; font-size: 18px; }
+  .facts { background: var(--card); border: 1px solid var(--line); border-radius: 18px; padding: 8px 28px; }
+  .facts div { padding: 16px 0; border-bottom: 1px solid var(--line); }
+  .facts div:last-child { border-bottom: none; }
+  .facts small { color: var(--muted); font-size: 14px; display: block; }
+  .facts strong { font-weight: 600; }
+
+  /* project */
+  .project { margin-bottom: 72px; }
+  .project:last-child { margin-bottom: 0; }
+  .proj-top { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; margin-bottom: 24px; }
+  .proj-top h3 { font-size: clamp(26px, 3.4vw, 36px); margin: 10px 0 14px; }
+  .proj-top p { color: var(--body); margin-bottom: 14px; }
+  .role { display: flex; gap: 24px; flex-wrap: wrap; margin: 6px 0 4px; }
+  .role div { border-left: 3px solid var(--accent); padding-left: 14px; }
+  .role small { display: block; color: var(--muted); font-size: 13px; }
+  .role strong { font-size: 16px; }
+  ul.points { list-style: none; }
+  ul.points li { position: relative; padding-left: 20px; margin-bottom: 10px; color: var(--body); }
+  ul.points li::before { content: ""; position: absolute; left: 0; top: 10px; width: 8px; height: 8px; border-radius: 2px; background: var(--accent); }
+  ul.points b { color: var(--ink); }
+
+  .numbers { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin: 8px 0 24px; }
+  .num { background: var(--ink); color: var(--paper); border-radius: 16px; padding: 22px; border-top: 4px solid var(--accent); }
+  .num b { font-family: 'Space Grotesk', sans-serif; font-size: 34px; display: block; line-height: 1.1; }
+  .num span { font-size: 14px; color: #BFCAD6; }
+
+  .gallery { display: grid; gap: 16px; }
+  .g2 { grid-template-columns: 1fr 1fr; }
+  .g3 { grid-template-columns: repeat(3, 1fr); }
+  .g6 { grid-template-columns: repeat(6, 1fr); }
+  figure { background: var(--card); border: 1px solid var(--line); border-radius: 16px; overflow: hidden; }
+  figure a { display: block; }
+  figure img { width: 100%; height: 260px; object-fit: cover; }
+  figure img.contain { object-fit: contain; background: #fff; padding: 10px; }
+  figure.tall img { height: 380px; }
+  .g6 figure img { height: 150px; }
+  figcaption { font-size: 14px; color: var(--muted); padding: 10px 14px; }
+
+  table { width: 100%; border-collapse: collapse; background: var(--card); border-radius: 14px; overflow: hidden; font-size: 15px; }
+  th, td { text-align: left; padding: 12px 16px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  th { background: var(--ink); color: var(--paper); font-weight: 600; }
+  tr:last-child td { border-bottom: none; }
+
+  /* skills */
+  .skills { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .skill { background: var(--card); border: 1px solid var(--line); border-radius: 18px; padding: 28px; }
+  .skill h3 { font-size: 22px; margin-bottom: 12px; }
+  .skill ul { list-style: none; color: var(--body); }
+  .skill li { padding: 4px 0; }
+
+  /* hobbies */
+  .hobbies { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+  .hobby { background: var(--card); border-radius: 18px; overflow: hidden; }
+  .hobby img { width: 100%; height: 200px; object-fit: cover; }
+  .hobby .ph { height: 200px; background: var(--ink); display: flex; align-items: center; justify-content: center; color: #F0904F; font-family: 'Space Grotesk', sans-serif; font-size: 22px; text-align: center; padding: 20px; }
+  .hobby div.t { padding: 18px; }
+  .hobby h3 { font-size: 20px; margin-bottom: 6px; }
+  .hobby p { color: var(--body); font-size: 15px; }
+  .split { display: grid; grid-template-columns: 1fr 1fr; }
+  .split img { height: 200px; }
+
+  footer { background: var(--ink); color: var(--paper); padding: 72px 0; }
+  footer h2 { font-size: clamp(34px, 5vw, 56px); margin: 10px 0 16px; }
+  footer p { color: #BFCAD6; margin-bottom: 28px; font-size: 18px; }
+  footer .eyebrow { color: #F0904F; }
+  footer .copy { margin-top: 40px; font-size: 13px; color: #6A7E92; }
+
+  @media (max-width: 860px) {
+    .hero .wrap, .about-grid, .proj-top { grid-template-columns: 1fr; }
+    .numbers { grid-template-columns: 1fr 1fr; }
+    .skills { grid-template-columns: 1fr; }
+    .hobbies { grid-template-columns: 1fr 1fr; }
+    .g3 { grid-template-columns: 1fr 1fr; }
+    .g6 { grid-template-columns: repeat(3, 1fr); }
+    nav ul { gap: 16px; }
+    section { padding: 60px 0; }
+  }
+  @media (max-width: 560px) {
+    .g2, .g3, .hobbies { grid-template-columns: 1fr; }
+    nav ul { display: none; }
+    figure img, figure.tall img { height: 240px; }
+    table { font-size: 14px; }
+    th, td { padding: 10px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a class="brand" href="#top">Ethan Kaminsky</a>
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <div>
+      <p class="eyebrow">Engineering Portfolio</p>
+      <h1>Ethan Kaminsky</h1>
+      <p class="lede">Aerospace Engineering (Rocket Propulsion) at Embry-Riddle Aeronautical University. I design and build hardware that has to work the first time.</p>
+      <div class="stats">
+        <div><b>4.00</b><span>GPA · Honors Program</span></div>
+        <div><b>May 2028</b><span>Expected graduation</span></div>
+        <div><b>Summer 2027</b><span>Seeking internships</span></div>
+      </div>
+      <div class="btns">
+        <a class="btn primary" href="#projects">View projects</a>
+        <a class="btn ghost" href="files/Ethan_Kaminsky_Resume.pdf" target="_blank" rel="noopener">Download resume</a>
+      </div>
+    </div>
+    <div class="hero-img">
+      <img src="img/linc-assembly.png" alt="L.I.N.C. lunar cable management device, isometric render with labeled subassemblies">
+    </div>
+  </div>
+</header>
+
+<section id="about">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">About me</p>
+      <h2>Drawn to the integration side of engineering</h2>
+    </div>
+    <div class="about-grid">
+      <div>
+        <p>I’m an aerospace engineering student at Embry-Riddle with a concentration in rocket propulsion and a minor in Space Operations. I like the part of engineering where parts, wiring and people physically come together on a real system.</p>
+        <p>Leading my team’s NASA Micro-g NExT design challenge, I found an appreciation for the systems thinking behind meeting hard limits like a cable’s bend radius and a strict weight maximum. I want to bring that mindset to every engineering problem I take on.</p>
+        <p>My long-term goal is to become an astronaut.</p>
+      </div>
+      <div class="facts">
+        <div><small>Leadership</small><strong>Lead Designer, NASA Micro-g NExT · Team Lead, SSEP Mission 22</strong></div>
+        <div><small>Field engineering</small><strong>WASH Lead &amp; Treasurer, Pure Water Project</strong></div>
+        <div><small>Hands-on build</small><strong>90 gal/hr RO purifier: wiring, metalwork, plumbing</strong></div>
+        <div><small>Tools</small><strong>CATIA V5 · Fusion 360 · SolidWorks · MATLAB · ANSYS</strong></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projects" class="alt">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Projects</p>
+      <h2>Selected work</h2>
+      <p>Design challenges, field builds, research and CAD, with the numbers behind each one.</p>
+    </div>
+
+    <!-- LINC -->
+    <article class="project" id="linc">
+      <div class="proj-top">
+        <div>
+          <p class="eyebrow">NASA Micro-g NExT 2027 · Fall 2026</p>
+          <h3>L.I.N.C.: a cable reel for lunar spacewalks</h3>
+          <p>NASA asked for a lightweight, hand-operated device to store, deploy and retrieve a 25–30 ft cable during Artemis IV moonwalks, keeping both ends accessible and resisting snags, tangles and lunar dust.</p>
+          <div class="role">
+            <div><small>My role</small><strong>Lead Facilitator &amp; Designer, 8-person team</strong></div>
+            <div><small>Tools</small><strong>CATIA V5, Fusion 360, ANSYS</strong></div>
+          </div>
+        </div>
+        <ul class="points">
+          <li><b>Built around the cable:</b> a 12 in spool core protects the 6 in minimum bend radius; a 1.75 in winding width keeps the 0.81 in cable in orderly wraps.</li>
+          <li><b>Designed for spacesuit gloves:</b> a 4 in crank with a free-spinning tri-oval grip, following NASA tool guidance.</li>
+          <li><b>Both ends always reachable:</b> an elevated cord clip keeps the inner end of the cable on top.</li>
+          <li><b>Three layers against lunar dust:</b> a labyrinth seal, silicon carbide seal rings and sealed, dry-lubricated bearings.</li>
+          <li><b>Verified:</b> hand calculations, then ANSYS static and drop analysis; all 22 NASA requirements tracked in a compliance matrix.</li>
+        </ul>
+      </div>
+      <div class="numbers">
+        <div class="num"><b>6 in</b><span>Min bend radius, never violated</span></div>
+        <div class="num"><b>16.3 in-lb</b><span>Crank torque vs. 30 in-lb limit</span></div>
+        <div class="num"><b>13.2 lb</b><span>Device mass vs. 15 lb limit</span></div>
+        <div class="num"><b>2.67</b><span>Min factor of safety vs. 2.0 required</span></div>
+      </div>
+      <div class="gallery g3">
+        <figure><a href="img/linc-spool.png" target="_blank"><img class="contain" src="img/linc-spool.png" alt="Rotating spool subassembly render" loading="lazy"></a><figcaption>Rotating spool subassembly</figcaption></figure>
+        <figure><a href="img/linc-fea.png" target="_blank"><img class="contain" src="img/linc-fea.png" alt="ANSYS safety factor plot of the crank handle" loading="lazy"></a><figcaption>ANSYS: crank factor of safety, minimum 2.67</figcaption></figure>
+        <figure><a href="img/linc-interface.png" target="_blank"><img class="contain" src="img/linc-interface.png" alt="Section drawing of the rotating interface with seals and bearing" loading="lazy"></a><figcaption>Rotating interface: bearing, seals, labyrinth</figcaption></figure>
+      </div>
+    </article>
+
+    <!-- Pure Water -->
+    <article class="project" id="pure-water">
+      <div class="proj-top">
+        <div>
+          <p class="eyebrow">Pure Water Project · 2024–present</p>
+          <h3>Solar-powered clean water in the Dominican Republic</h3>
+          <p>An Embry-Riddle service project building solar-powered reverse-osmosis water stations for rural communities: Rincón de Yuboa in 2025 and Corocito in 2026.</p>
+          <div class="role">
+            <div><small>My role</small><strong>WASH Lead &amp; Treasurer</strong></div>
+            <div><small>System</small><strong>90 gal/hr RO, solar powered</strong></div>
+          </div>
+        </div>
+        <ul class="points">
+          <li><b>Hands-on build:</b> designed and built several purifier iterations, including the electrical wiring, metal cutting, water-line connections and 3D-printed Fusion 360 parts.</li>
+          <li><b>Control box:</b> panel switches drive contactors that power the pumps, with overload relays, float switches and a pressure switch as safety interlocks.</li>
+          <li><b>Treasurer:</b> handled international purchasing for the purifier housing and solar install, and grew funding through new grants, SGA and College of Engineering support.</li>
+          <li><b>WASH Lead:</b> built bilingual water-safety lessons for local schools and helped set up a community business so the station funds its own replacement parts.</li>
+        </ul>
+      </div>
+      <div class="gallery g2" style="margin-bottom:16px">
+        <figure class="tall"><a href="img/pwp-station.jpg" target="_blank"><img src="img/pwp-station.jpg" alt="Finished purification station with tanks, RO unit and jug racks" loading="lazy"></a><figcaption>2025 station: storage tanks, RO unit, jug racks and power electronics</figcaption></figure>
+        <figure class="tall"><a href="img/pwp-wiring.png" target="_blank"><img class="contain" src="img/pwp-wiring.png" alt="Wiring diagram of the purifier control box" loading="lazy"></a><figcaption>Control box wiring: black hot, red neutral, green ground</figcaption></figure>
+      </div>
+      <div class="gallery g3">
+        <figure><a href="img/pwp-ro.jpg" target="_blank"><img src="img/pwp-ro.jpg" alt="RO skid with control panel" loading="lazy"></a><figcaption>2026 RO skid and control panel</figcaption></figure>
+        <figure><a href="img/pwp-crew.jpg" target="_blank"><img src="img/pwp-crew.jpg" alt="Installers mounting solar panels on the roof" loading="lazy"></a><figcaption>Solar array install</figcaption></figure>
+        <figure><a href="img/pwp-roof.jpg" target="_blank"><img src="img/pwp-roof.jpg" alt="Completed rooftop solar array" loading="lazy"></a><figcaption>Finished rooftop array</figcaption></figure>
+      </div>
+    </article>
+
+    <!-- SSEP -->
+    <article class="project" id="ssep">
+      <div class="proj-top">
+        <div>
+          <p class="eyebrow">SSEP Mission 22 · ISS experiment · 2026–present</p>
+          <h3>Does an enzyme react differently without gravity?</h3>
+          <p>In orbit nothing stirs a fluid, so molecules meet only by diffusion. Our experiment tests whether that changes how much product a plant enzyme (HRP) makes as it breaks down a mock pollutant (ABTS), which turns green as it reacts.</p>
+          <div class="role">
+            <div><small>My role</small><strong>Team Lead &amp; Co-Principal Investigator</strong></div>
+            <div><small>Applications</small><strong>Spacecraft air purification, astronaut diagnostics</strong></div>
+          </div>
+        </div>
+        <ul class="points">
+          <li><b>Flight design:</b> a three-chamber mini-lab tube. Crew open one valve to start a 72-hour, diffusion-only reaction, then a second to stop it with a surfactant.</li>
+          <li><b>Chemistry choices:</b> a pH 5.5 buffer suits both chemicals; sucrose makes one layer denser so gravity drives mixing in the ground tubes.</li>
+          <li><b>Ground plan:</b> four control groups with time points from 0 to 72 hours, read on a plate reader at 405 nm.</li>
+          <li><b>Analysis:</b> results normalized from 0 to 1 and compared against a 95% prediction interval from the ground tubes.</li>
+        </ul>
+      </div>
+      <div class="gallery g3">
+        <figure><a href="img/ssep-plate.jpg" target="_blank"><img src="img/ssep-plate.jpg" alt="96-well plate with green reaction product" loading="lazy"></a><figcaption>Pre-flight trial: timed samples in a 96-well plate</figcaption></figure>
+        <figure><a href="img/ssep-hrp.jpg" target="_blank"><img src="img/ssep-hrp.jpg" alt="Enzyme dilution series in labeled beakers" loading="lazy"></a><figcaption>Enzyme dilution series</figcaption></figure>
+        <figure><a href="img/ssep-tubes.jpg" target="_blank"><img src="img/ssep-tubes.jpg" alt="Test tubes showing product fading with enzyme concentration" loading="lazy"></a><figcaption>Reaction tubes by enzyme concentration</figcaption></figure>
+      </div>
+    </article>
+
+    <!-- EE 328 -->
+    <article class="project" id="ee328">
+      <div class="proj-top">
+        <div>
+          <p class="eyebrow">EE 328 Electrical Lab · Fall 2026</p>
+          <h3>Measure it, check it against theory, explain the gap</h3>
+          <p>Six labs on building and measuring circuits. Most results landed within 0.04–3.4% of theory.</p>
+          <ul class="points" style="margin-top:16px">
+            <li><b>Troubleshooting:</b> in Lab 1 the voltages matched within 0.04%, but two branch currents read 7.6% low. I traced it to the test setup: three ammeters in the circuit at once each added a little resistance.</li>
+          </ul>
+        </div>
+        <table>
+          <tr><th>Lab</th><th>Result</th></tr>
+          <tr><td>DC fundamentals</td><td>KVL within 0.04%; 7.6% current gap traced to meter loading</td></tr>
+          <tr><td>Linear vs. non-linear</td><td>LED operating point within 0.17%</td></tr>
+          <tr><td>Superposition</td><td>Within 0.33% of measured total</td></tr>
+          <tr><td>Thévenin &amp; max power</td><td>Peak power within 0.41%</td></tr>
+          <tr><td>Oscilloscope</td><td>Generator resistance 50.8 Ω vs. 50 Ω spec</td></tr>
+          <tr><td>RC / RL transients</td><td>Time constants within 1.9% and 3.4%</td></tr>
+        </table>
+      </div>
+      <div class="gallery g2">
+        <figure><a href="img/ee-led.png" target="_blank"><img class="contain" src="img/ee-led.png" alt="LED I-V curve with load line" loading="lazy"></a><figcaption>LED load-line analysis</figcaption></figure>
+        <figure><a href="img/ee-scope.png" target="_blank"><img class="contain" src="img/ee-scope.png" alt="Oscilloscope trace of an RC circuit" loading="lazy"></a><figcaption>RC response to a square wave</figcaption></figure>
+      </div>
+    </article>
+
+    <!-- CATIA reel -->
+    <article class="project" id="cad">
+      <div class="proj-top">
+        <div>
+          <p class="eyebrow">CAD · CATIA V5</p>
+          <h3>Fishing reel: modeled, assembled, drawn to tolerance</h3>
+          <p>Modeled the reel’s parts, built the handle subassembly with a bill of materials, and produced a six-sheet drawing set, including an improved revision of the subassembly.</p>
+        </div>
+        <ul class="points">
+          <li><b>Fits and tolerances:</b> specified an H7/p6 interference fit so the end cap presses into the grip and stays, with a toleranced 8.515–8.524 mm diameter.</li>
+          <li><b>Now a CATIA tutor</b> at the ERAU Academic Advancement Center.</li>
+        </ul>
+      </div>
+      <div class="gallery g2" style="margin-bottom:16px">
+        <figure><a href="img/reel-drawing.png" target="_blank"><img class="contain" style="height:276px" src="img/reel-drawing.png" alt="Drawing of the handle grip end cap with interference fit note" loading="lazy"></a><figcaption>End cap drawing with H7/p6 fit</figcaption></figure>
+        <div class="gallery g3" style="align-content:start">
+          <figure><img src="img/reel-0d74ad5f.jpg" alt="Handle arm render" loading="lazy"></figure>
+          <figure><img src="img/reel-b0649e4f.jpg" alt="Crank link render" loading="lazy"></figure>
+          <figure><img src="img/reel-de49b4b9.jpg" alt="Bail spring bar render" loading="lazy"></figure>
+          <figure><img src="img/reel-62453778.jpg" alt="Bail wire with roller render" loading="lazy"></figure>
+          <figure><img src="img/reel-4305ca51.jpg" alt="Handle grip render" loading="lazy"></figure>
+          <figure><img src="img/reel-e3509b1e.jpg" alt="Mounting bracket render" loading="lazy"></figure>
+        </div>
+      </div>
+    </article>
+
+    <!-- Launch vehicle -->
+    <article class="project" id="launch">
+      <div class="proj-top">
+        <div>
+          <p class="eyebrow">Systems design · Jan–Mar 2025</p>
+          <h3>Two-stage launch vehicle, 4,500 lb to low Earth orbit</h3>
+          <p>A team design of a two-stage launch vehicle. I was the mount interface specialist, making sure our vehicle physically fit the existing launch mount.</p>
+          <div class="role">
+            <div><small>My role</small><strong>Mount Interface Specialist</strong></div>
+            <div><small>Tools</small><strong>CATIA V5, MATLAB, Excel</strong></div>
+          </div>
+        </div>
+        <ul class="points">
+          <li><b>Interface checks:</b> bulkhead diameter, nozzle diameter and nozzle height verified against the mount’s datums and brackets.</li>
+          <li><b>CAD:</b> modeled the bulkheads, motors, fairings and mount interface in CATIA V5.</li>
+          <li><b>Performance:</b> trajectory optimized in MATLAB and Excel, reaching a 126.9 nmi burnout altitude.</li>
+        </ul>
+      </div>
+      <div class="gallery g2">
+        <figure class="tall"><a href="img/lv-vehicle.jpg" target="_blank"><img class="contain" src="img/lv-vehicle.jpg" alt="CATIA render of the two-stage launch vehicle" loading="lazy"></a><figcaption>Vehicle model in CATIA V5</figcaption></figure>
+        <figure class="tall"><a href="img/lv-mount.png" target="_blank"><img class="contain" src="img/lv-mount.png" alt="Launch mount drawing" loading="lazy"></a><figcaption>Launch mount the vehicle had to interface with</figcaption></figure>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Skills</p>
+      <h2>What I bring to a team</h2>
+    </div>
+    <div class="skills">
+      <div class="skill"><h3>CAD &amp; drawings</h3><ul><li>CATIA V5 (tutor)</li><li>Fusion 360, SolidWorks</li><li>Assembly &amp; detail drawings</li><li>Bills of materials</li></ul></div>
+      <div class="skill"><h3>Analysis</h3><ul><li>ANSYS static &amp; explicit dynamics</li><li>MATLAB (tutor), Excel</li><li>Hand calcs &amp; verification</li><li>Requirements tracing</li></ul></div>
+      <div class="skill"><h3>Hands-on &amp; leadership</h3><ul><li>Electrical wiring &amp; testing</li><li>Metal cutting, 3D printing</li><li>Team leadership</li><li>Budgets (Treasurer, two organizations)</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<section class="alt" id="outside">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Outside the lab</p>
+      <h2>A little more about me</h2>
+    </div>
+    <div class="hobbies">
+      <div class="hobby"><div class="ph">Space systems, orbits &amp; propulsion</div><div class="t"><h3>Future astronaut</h3><p>The long-term goal behind everything I work on.</p></div></div>
+      <div class="hobby"><div class="split"><img src="img/hob-crab.jpg" alt="Me as a kid eating crab legs" loading="lazy"><img src="img/hob-parm.jpg" alt="Chicken parmesan I cooked" loading="lazy"></div><div class="t"><h3>Cooking</h3><p>I love making (and eating) really good food, though I’ll always take my own cooking.</p></div></div>
+      <div class="hobby"><img src="img/hob-watch.jpg" alt="Bulova Lunar Pilot on my wrist" loading="lazy"><div class="t"><h3>Watch collecting</h3><p>Favorite piece: the Bulova Lunar Pilot, a tribute to the watch worn on Apollo 15.</p></div></div>
+      <div class="hobby"><img src="img/hob-hoops.jpg" alt="Me dribbling a basketball in a game" loading="lazy"><div class="t"><h3>Basketball &amp; tennis</h3><p>Played and watched both since I was a little kid.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<footer id="contact">
+  <div class="wrap">
+    <p class="eyebrow">Contact</p>
+    <h2>Let’s connect</h2>
+    <p>I’m looking for Summer 2027 engineering internships and would be glad to walk through any of these projects.</p>
+    <div class="btns">
+      <a class="btn primary" href="mailto:Ethankaminsky636@gmail.com">Ethankaminsky636@gmail.com</a>
+      <a class="btn ghost" href="https://www.linkedin.com/in/ethan-kaminsky" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="btn ghost" href="files/Ethan_Kaminsky_Resume.pdf" target="_blank" rel="noopener">Resume (PDF)</a>
+    </div>
+    <p class="copy">© 2026 Ethan Kaminsky</p>
+  </div>
+</footer>
+
+</body>
+</html>
